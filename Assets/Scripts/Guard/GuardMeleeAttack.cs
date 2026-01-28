@@ -5,7 +5,7 @@ public class GuardMeleeAttack : MonoBehaviour
     [Header("Melee Settings")]
     public float attackRange = 1.6f;
     public float damage = 10f;
-    public float attackCooldown = 1f;
+    public float attackCooldown = 2f;
 
     [Header("Who can be hit")]
     public LayerMask hitMask;
