@@ -163,4 +163,43 @@ public class GuardFSM : MonoBehaviour
                 EnterPatrol();
         }
     }
+
+    // --------- VISUALISE VIEW CONE (Scene view only) ---------
+    void OnDrawGizmosSelected()
+    {
+        // Only draw if we're in editor and have sensible values
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
+
+        // Draw the FOV cone edges
+        Vector3 leftDir = DirFromAngle(-viewAngle * 0.5f);
+        Vector3 rightDir = DirFromAngle(viewAngle * 0.5f);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, transform.position + leftDir * viewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + rightDir * viewRadius);
+
+        // Optional: draw "cone" lines (makes it look like a real cone)
+        Gizmos.color = new Color(0f, 1f, 1f, 0.15f);
+
+        int steps = 20;
+        float stepAngle = viewAngle / steps;
+        for (int i = 0; i <= steps; i++)
+        {
+            float a = -viewAngle * 0.5f + stepAngle * i;
+            Vector3 dir = DirFromAngle(a);
+            Gizmos.DrawLine(transform.position, transform.position + dir * viewRadius);
+        }
+
+        // Draw last known position (helpful for Search state)
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(lastKnownPos, 0.2f);
+    }
+
+    Vector3 DirFromAngle(float angle)
+    {
+        float rad = (transform.eulerAngles.y + angle) * Mathf.Deg2Rad;
+        return new Vector3(Mathf.Sin(rad), 0f, Mathf.Cos(rad));
+    }
+
 }
