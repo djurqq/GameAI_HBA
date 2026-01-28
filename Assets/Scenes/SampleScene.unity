@@ -382,7 +382,7 @@ Transform:
   m_GameObject: {fileID: 305601679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 0.77, z: 2.27}
+  m_LocalPosition: {x: 9.8, y: 0.6500001, z: 2.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1597,7 +1597,7 @@ Transform:
   m_GameObject: {fileID: 907074775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.48, y: 0.83, z: 2.31}
+  m_LocalPosition: {x: 3.48, y: 0.71000004, z: 2.31}
   m_LocalScale: {x: 0.56618, y: 1, z: 0.63792}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1885,7 +1885,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.99999523, z: -0, w: 0.003084659}
   m_LocalPosition: {x: 6.71, y: 0.76, z: -9.72}
-  m_LocalScale: {x: 4.2717123, y: 1.6488, z: 0.17792}
+  m_LocalScale: {x: 3.0051923, y: 1.6488, z: 0.17792}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2437,6 +2437,8 @@ GameObject:
   - component: {fileID: 1928137379}
   - component: {fileID: 1928137380}
   - component: {fileID: 1928137381}
+  - component: {fileID: 1928137382}
+  - component: {fileID: 1928137383}
   m_Layer: 7
   m_Name: Strategist
   m_TagString: Untagged
@@ -2585,6 +2587,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAmmo: 30
   currentAmmo: 15
+--- !u!114 &1928137382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928137374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e1cf5eaab97ce4eba9225cce3128ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decisionInterval: 0.7
+  criticalHealthThreshold: 0.3
+  criticalThreatDistance: 4
+  threatenedHealthThreshold: 0.55
+  viewRadius: 10
+  viewAngle: 120
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 320
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 8
+  healthPacks:
+  - {fileID: 305601683}
+  - {fileID: 1938228995}
+  ammoCrates:
+  - {fileID: 1975311836}
+  - {fileID: 907074779}
+  coverPoints:
+  - {fileID: 508970780}
+  - {fileID: 1764761618}
+  - {fileID: 196204206}
+  normalSpeed: 3.5
+  panicSpeed: 5.5
+  attackRange: 10
+  attackCooldown: 0.5
+  attackDamage: 10
+--- !u!54 &1928137383
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928137374}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &1929905102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,6 +2668,7 @@ GameObject:
   - component: {fileID: 1929905107}
   - component: {fileID: 1929905108}
   - component: {fileID: 1929905110}
+  - component: {fileID: 1929905111}
   m_Layer: 6
   m_Name: Guard
   m_TagString: Untagged
@@ -2742,7 +2811,7 @@ MonoBehaviour:
   chaseSpeed: 5
   searchSpeed: 3
   searchWaitTime: 3
-  viewRadius: 9
+  viewRadius: 8.5
   viewAngle: 90
   enemyMask:
     serializedVersion: 2
@@ -2764,6 +2833,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+--- !u!114 &1929905111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929905102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e9e846900d4b7469f2737defb112a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1.6
+  damage: 10
+  attackCooldown: 1
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!1 &1938228991
 GameObject:
   m_ObjectHideFlags: 0
@@ -2867,7 +2954,7 @@ Transform:
   m_GameObject: {fileID: 1938228991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.39, y: 0.77, z: -7.35}
+  m_LocalPosition: {x: 3.39, y: 0.6500001, z: -7.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2901,13 +2988,13 @@ GameObject:
   - component: {fileID: 1952965190}
   - component: {fileID: 1952965189}
   - component: {fileID: 1952965188}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Gladiator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1952965188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3029,7 +3116,7 @@ Transform:
   m_GameObject: {fileID: 1952965187}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.22, y: 0.798, z: -22.18}
+  m_LocalPosition: {x: 12.85, y: 0.798, z: -33.73}
   m_LocalScale: {x: 0.6907934, y: 0.6907934, z: 0.6907934}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3267,7 +3354,7 @@ Transform:
   m_GameObject: {fileID: 1975311832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.65, y: 0.69, z: -7.28}
+  m_LocalPosition: {x: 9.65, y: 0.57, z: -7.28}
   m_LocalScale: {x: 0.56618, y: 1, z: 0.63792}
   m_ConstrainProportionsScale: 0
   m_Children: []
