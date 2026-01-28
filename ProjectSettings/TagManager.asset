@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - Obstacle
   - Water
   - UI
-  - Obstacle
-  - 
-  - 
+  - Guard
+  - Strategist
+  - Gladiator
   - 
   - 
   - 
