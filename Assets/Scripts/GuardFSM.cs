@@ -139,28 +139,3 @@ public class GuardFSM : MonoBehaviour
             EnterSearch();
         }
     }
-
-    void EnterSearch()
-    {
-        state = State.Search;
-        agent.speed = searchSpeed;
-        searchTimer = searchWaitTime;
-        agent.SetDestination(lastKnownPos);
-    }
-
-    void SearchUpdate()
-    {
-        if (target != null)
-        {
-            EnterChase();
-            return;
-        }
-
-        if (!agent.pathPending && agent.remainingDistance <= waypointReachDist)
-        {
-            searchTimer -= Time.deltaTime;
-            if (searchTimer <= 0f)
-                EnterPatrol();
-        }
-    }
-}
