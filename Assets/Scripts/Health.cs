@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public float currentHealth = 100f;
 
     public float Percent => Mathf.Clamp01(currentHealth / maxHealth);
+    public bool IsDead => currentHealth <= 0f;
 
     public void TakeDamage(float amount)
     {
@@ -15,5 +16,10 @@ public class Health : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
     }
 }
